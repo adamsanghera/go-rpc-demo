@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package greeter.service;
+
+option go_package= "greeterpb";
+
+import "greetings.proto";
+
+service Greeter {
+  rpc Greet(GreetRequest) returns (GreetResponse);
+}
+
+message GreetRequest {
+  greetings.Greeting OpeningGreeting = 1;
+}
+
+message GreetResponse {
+  greetings.Greeting ResponseGreeting = 1;
+}

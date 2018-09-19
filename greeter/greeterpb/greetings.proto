@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package greeter.greetings;
+
+option go_package= "greeterpb";
+
+message Greeting {
+  string GreeterName = 1;
+  string Greeting = 2;
+  Time Time = 3;
+}
+
+message Time {
+  int64 UnixTime = 1;
+}
