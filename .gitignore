@@ -1,2 +1,2 @@
-# Ignore generated code
-greeter/greeterpb/*.pb.go
+# Normally ignore generated code, but we won't so that people can build locally!
+# greeter/greeterpb/*.pb.go
