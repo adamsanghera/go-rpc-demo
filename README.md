@@ -9,3 +9,7 @@ For insight into the structure of this folder, check out [this link](https://www
 This folder contains the two build artifacts for this project, `greeter` and `greeterd`, a CLI tool and a daemon.
 
 The CLI tool makes gRPC calls to the daemon.
+
+## Greeter
+
+Contains the application code implementing the greeter service, which is leveraged by `greeterd` and queried by `greeter`.
