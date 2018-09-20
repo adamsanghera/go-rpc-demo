@@ -29,7 +29,7 @@ func (g *Greeter) Greet(ctx context.Context, in *greeterpb.GreetRequest) (*greet
 				"Hello, from %s, it seems that your time zone is %v hours off from mine.",
 				g.location, hourDifference.Hours()),
 			GreeterName: name,
-			Time:        &greeterpb.Time{UnixTime: time.Now().Unix()},
+			Time:        &greeterpb.Time{UnixTime: time.Now().In(time.Local).Unix()},
 		},
 	}, nil
 }
