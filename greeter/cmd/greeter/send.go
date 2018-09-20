@@ -66,7 +66,7 @@ var sendCmd = &cobra.Command{
 			OpeningGreeting: &greeterpb.Greeting{
 				GreeterName: args[1],
 				Greeting:    fmt.Sprintf("Howdy! I represent %s", args[1]),
-				Time:        &greeterpb.Time{UnixTime: time.Now().Unix()},
+				Time:        &greeterpb.Time{UnixTime: time.Now().In(time.Local).Unix()},
 			},
 		})
 

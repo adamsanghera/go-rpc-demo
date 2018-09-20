@@ -21,7 +21,7 @@ func (g *Greeter) Greet(ctx context.Context, in *greeterpb.GreetRequest) (*greet
 
 	log.Println(in.OpeningGreeting.String()) // isn't it nice to have string serialization for free?
 
-	hourDifference := time.Since(t).Round(time.Hour) // isn't the go time package great?
+	hourDifference := time.Now().In(time.Local).Sub(t).Round(time.Hour)
 
 	return &greeterpb.GreetResponse{
 		ResponseGreeting: &greeterpb.Greeting{
