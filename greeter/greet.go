@@ -19,8 +19,8 @@ func (g *Greeter) Greet(ctx context.Context, in *greeterpb.GreetRequest) (*greet
 
 	t := time.Unix(in.OpeningGreeting.Time.UnixTime, 0) // isn't unix time great?
 
-	log.Printf("Received a greeting %s, representing %s, where the time is %v",
-		in.OpeningGreeting.Greeting, in.OpeningGreeting.GreeterName, t) // isn't it nice to have string serialization for free?
+	log.Printf("Received a greeting %s, representing %s, which took %v to get here",
+		in.OpeningGreeting.Greeting, in.OpeningGreeting.GreeterName, time.Since(t)) // isn't it nice to have string serialization for free?
 
 	return &greeterpb.GreetResponse{
 		ResponseGreeting: &greeterpb.Greeting{
