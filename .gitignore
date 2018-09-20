@@ -1,2 +1,2 @@
 # Ignore generated code
-*.pb.go
+greeter/greeterpb/*.pb.go
