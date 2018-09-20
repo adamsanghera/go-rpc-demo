@@ -19,7 +19,8 @@ func (g *Greeter) Greet(ctx context.Context, in *greeterpb.GreetRequest) (*greet
 
 	t := time.Unix(in.OpeningGreeting.Time.UnixTime, 0) // isn't unix time great?
 
-	log.Println(in.OpeningGreeting.String()) // isn't it nice to have string serialization for free?
+	log.Printf("Received a greeting %s, representing %s, where the time is %v",
+		in.OpeningGreeting.Greeting, in.OpeningGreeting.GreeterName, time.Unix(in.OpeningGreeting.Time.UnixTime, 0)) // isn't it nice to have string serialization for free?
 
 	hourDifference := time.Now().In(time.Local).Sub(t).Round(time.Hour)
 
