@@ -20,15 +20,13 @@ func (g *Greeter) Greet(ctx context.Context, in *greeterpb.GreetRequest) (*greet
 	t := time.Unix(in.OpeningGreeting.Time.UnixTime, 0) // isn't unix time great?
 
 	log.Printf("Received a greeting %s, representing %s, where the time is %v",
-		in.OpeningGreeting.Greeting, in.OpeningGreeting.GreeterName, time.Unix(in.OpeningGreeting.Time.UnixTime, 0)) // isn't it nice to have string serialization for free?
-
-	hourDifference := t.Sub(time.Now().In(time.Local)).Round(time.Hour)
+		in.OpeningGreeting.Greeting, in.OpeningGreeting.GreeterName, t) // isn't it nice to have string serialization for free?
 
 	return &greeterpb.GreetResponse{
 		ResponseGreeting: &greeterpb.Greeting{
 			Greeting: fmt.Sprintf(
-				"Hello, from %s, it seems that your time zone is %v hours off from mine.",
-				g.location, hourDifference.Hours()),
+				"Hello, from %s, it seems that it took you %v to reach me",
+				g.location, time.Since(t)),
 			GreeterName: name,
 			Time:        &greeterpb.Time{UnixTime: time.Now().In(time.Local).Unix()},
 		},
