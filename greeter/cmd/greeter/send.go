@@ -78,7 +78,7 @@ var sendCmd = &cobra.Command{
 		respT := time.Unix(resp.ResponseGreeting.Time.UnixTime, 0)
 
 		log.Printf(`Received response: 
-	'%s' from %s, where the time is %v`, resp.ResponseGreeting.Greeting, resp.ResponseGreeting.GreeterName, respT)
+	'%s' from %s, which took %v`, resp.ResponseGreeting.Greeting, resp.ResponseGreeting.GreeterName, time.Since(respT))
 
 	},
 }
